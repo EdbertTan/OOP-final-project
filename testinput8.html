@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 5px 5px 5px 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 5px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+</style>
+</head>
+<body>
+
+<table>
+	<tr>
+		<td>
+			<label for="fname">Name</label><br>
+		</td>
+		<td>
+			<input id="bname" type="text" placeholder="Name.." title="Type in a name" style="width:300px;padding:5px;font-size:16px;">
+		</td>
+		<td>
+	</tr>
+<!--
+	<tr>
+		<td>
+			<label for="fname">ID No</label><br>
+		</td>
+		<td>
+			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" onfocus="ulfocus(1)" onfocusout="ulfocus(2)" style="width:300px;">
+
+			<ul id="myUL" style="width:300px;display:none;">
+				<li><a href="#">10115</a></li>
+				<li><a href="#">10118</a></li>
+				<li><a href="#">10321</a></li>
+				<li><a href="#">10525</a></li>
+				<li><a href="#">11252</a></li>
+				<li><a href="#">20321</a></li>
+			</ul>
+		</td>
+	</tr>
+-->
+
+	<tr>
+		<td>
+			<label>Date</label><br>
+		</td>
+		<td>
+			<input id="bdate" type="date" style="padding:5px;font-size:16px;">		
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<label>Time In</label><br>
+		</td>
+		<td>
+			<input id="btimein" type="time" style="padding:5px;font-size:16px;">
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<label>Time Out</label><br>
+		</td>
+		<td>
+			<input id="btimeout" type="time" style="padding:5px;font-size:16px;">
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<label>Shift</label><br>
+		</td>
+		<td>
+			<input type="radio" id="s1" name="age" checked>
+			<label for="s1">Shift 1</label><br>
+			<input type="radio" id="s2" name="age">
+			<label for="s2">Shift 2</label><br>  
+			<input type="radio" id="s3" name="age">
+			<label for="s3">Shift 3</label><br><br>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<label>Type</label><br>
+		</td>
+		<td>
+			<select name="status" id="status" style="padding:5px;font-size:16px;">
+				<option value="volvo">On Workday</option>
+				<option value="volvo">On Holiday</option>
+				<option value="volvo">On Duty</option>
+			</select>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<label>Approval</label><br>
+		</td>
+		<td>
+			<input type="checkbox" id="approval" name="approval" style="padding:5px;font-size:16px;margin-top:10px;">
+		</td>
+
+	</tr>
+
+
+
+	
+	
+	</td>
+  </tr>
+</table>
+
+<br>
+
+<button onclick="bsubmit()" style="font-size:16px;">Submit</button>
+
+
+
+
+
+
+
+
+
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+function ulfocus(ntype) {
+
+	if (ntype==1) {
+		document.getElementById("myUL").style.display="block";
+	} else {	
+		document.getElementById("myUL").style.display="none";
+	}	
+}
+
+function bsubmit() {
+
+	document.getElementById("bname").value = "";
+	document.getElementById("bdate").value = "";
+	document.getElementById("btimein").value = "";
+	document.getElementById("btimeout").value = "";
+	document.getElementById("s1").checked = true;
+	document.getElementById("status").options[0].selected = true;  
+	document.getElementById("approval").checked = false;  
+}
+
+
+
+</script>
+
+</body>
+</html>
